@@ -36,6 +36,7 @@
   $(function() {
 
     setPageLayout();
+    $('.scroll-button').css('display', 'block');
 
     $(window).resize(function() {
       setPageLayout();

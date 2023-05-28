@@ -122,6 +122,7 @@
 }
 
 .scroll-button {
+  display: none;  // Wait until the page is loaded before showing the scroll button.
   position: fixed;
   left: 50%;
   bottom: 0;
