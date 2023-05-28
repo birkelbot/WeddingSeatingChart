@@ -11,7 +11,6 @@
   }
 }
 
-
 .header {
   display: flex;
   flex-direction: column;
@@ -108,8 +107,7 @@
 .names {
   display: flex;
   flex-flow: column wrap;
-  padding-left: 20px;
-  padding-right: 30px;
+  max-width: map-get($grid-breakpoints, xxl);
 
   .chunk {
     padding: 5px;

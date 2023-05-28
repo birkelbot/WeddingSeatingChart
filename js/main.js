@@ -7,6 +7,9 @@
   breakpoints.set('xl', 1200);
   breakpoints.set('xxl', 1400);
 
+  const NAMES_PADDING_LEFT = 20;
+  const NAMES_PADDING_RIGHT = 30;
+
   function setPageLayout() {
     if ($(window).width() < breakpoints.get('sm')) {
       // One column.
@@ -20,12 +23,27 @@
       // Three columns
       $('.names').css('height', $(window).width()*1.05);
       $('.chunk').css('width', '33%');
-    } else {
-      // Four columns.
+    } else if ($(window).width() < breakpoints.get('xxl')) {
+      // Four columns (variable width).
       $('.names').css('height', $(window).width()*0.627);
       $('.chunk').css('width', '25%');
+    } else {
+      // Four columns (fixed width).
+      $('.names').css('height', breakpoints.get('xxl')*0.627);
+      $('.chunk').css('width', breakpoints.get('xxl')*0.242);
+
+      var extraPadding = ($(window).width() -  breakpoints.get('xxl') - NAMES_PADDING_LEFT - NAMES_PADDING_RIGHT) / 2;
+      $('.names').css('padding-left', NAMES_PADDING_LEFT + extraPadding);
+      $('.names').css('padding-right', NAMES_PADDING_RIGHT + extraPadding);
     }
 
+    // Remove margins on smaller screens.
+    if ($(window).width() <= breakpoints.get('xxl')) {
+      $('.names').css('padding-left', NAMES_PADDING_LEFT);
+      $('.names').css('padding-right', NAMES_PADDING_RIGHT);
+    }
+
+    // Put the scroll button exactly in the middle of the screen.
     $('.scroll-button').css('left', $(window).width()/2 - $('.scroll-button').width()/2);
   }
 
