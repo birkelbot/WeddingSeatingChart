@@ -1,0 +1,159 @@
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+@mixin animation($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .wisteria {
+    position: absolute;
+    z-index: -1;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    width: 30%;
+    @include media-breakpoint-up(sm) {
+      width: 22%;
+    }
+    // @include media-breakpoint-up(md) {
+    //   width: 80%;
+    // }
+    @include media-breakpoint-up(lg) {
+      width: 20%;
+    }
+    @include media-breakpoint-up(xl) {
+      width: 22%;
+    }
+    @include media-breakpoint-up(xxl) {
+      width: 300px;
+    }
+  }
+
+  .find-your-seat {
+    max-width: 700px;
+
+    width: 90%;
+    padding-top: 18%;
+    @include media-breakpoint-up(sm) {
+    padding-top: 80px;
+      width: 80%;
+    }
+    @include media-breakpoint-up(md) {
+      width: 70%;
+    }
+    @include media-breakpoint-up(xxl) {
+      padding-top: 40px;
+    }
+  }
+
+  .matt-and-sasha {
+    font-family: 'Lustria', Arial, sans-serif;
+    padding-top: 10px;
+    background-color: white;
+
+    font-size: 4vw;
+    @include media-breakpoint-up(lg) {
+      font-size: 40px;
+    }
+    @include media-breakpoint-up(xl) {
+      font-size: 45px;
+    }
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .vertical {
+    width: 100%;
+
+    display: block;
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+
+  .horizontal {
+    width: 100%;
+    max-width: 1000px;
+
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+}
+
+.names {
+  display: flex;
+  flex-flow: column wrap;
+  padding-left: 20px;
+  padding-right: 30px;
+
+  .chunk {
+    padding: 5px;
+
+    .J {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.scroll-button {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  margin-bottom: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+
+  .arrow {
+    width: 24px;
+    height: 24px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    margin-left: 16px;
+    margin-top: 10px;
+  }
+  transform: rotate(-45deg);
+
+  @include keyframes(bop-downwards) {
+    0% {
+      transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+  @include animation(bop-downwards, 2s, linear, infinite);
+}
+
